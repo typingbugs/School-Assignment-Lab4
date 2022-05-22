@@ -86,7 +86,7 @@ void modify_configinfo(CONF* pIni)
 		printf(" |\n");
 		printf("|  8   | 需要随机生成记录条数时条数值的下限     | ");
 		printf("%d", pIni->recordcount2);
-		for (int i = 0; i < max - len[7] - 1; i++)
+		for (int i = 0; i < max - len[7]; i++)
 			printf(" ");
 		printf(" |\n");
 		printf("|  0   | 修改完成                               | ");
@@ -120,12 +120,24 @@ void modify_configinfo(CONF* pIni)
 			char filename[MAX_STR_LEN * 2 + 1];
 			if (ans == 1)
 			{
-				fgets(tempFilesavepath, MAX_STR_LEN, stdin);
+				do {
+					printf("请输入新的数据记录文件的存储目录：");
+					fgets(tempFilesavepath, MAX_STR_LEN, stdin);
+				} while (tempFilesavepath[0] == '\n');
+				int len = strlen(tempFilesavepath);
+				if (tempFilesavepath[len - 1] == '\n')
+					tempFilesavepath[len - 1] = '\0';	//删去读入的回车
 				strcpy(tempFilename, pIni->filename);
 			}
 			else
 			{
-				fgets(tempFilename, MAX_STR_LEN, stdin);
+				do {
+					printf("请输入新的数据记录文件的文件名信息：");
+					fgets(tempFilename, MAX_STR_LEN, stdin);
+				} while (tempFilename[0] == '\n');
+				int len = strlen(tempFilename);
+				if (tempFilename[len - 1] == '\n')
+					tempFilename[len - 1] = '\0';	//删去读入的回车
 				strcpy(tempFilesavepath, pIni->filesavepath);
 			}
 			strncpy(filename, tempFilesavepath, MAX_STR_LEN);
@@ -231,37 +243,37 @@ void modify_configinfo(CONF* pIni)
 					printf("修改失败：输入数据大于上限，请重新输入。\n");
 					continue;
 				}
+
+				if (ans == 3)
+					pIni->maxvalue1 = tempDataNum;
+				else if (ans == 4)
+					pIni->minvalue1 = tempDataNum;
+				else if (ans == 5)
+					pIni->maxvalue2 = tempDataNum;
+				else if (ans == 6)
+					pIni->minvalue2 = tempDataNum;
+				else if (ans == 7)
+					pIni->recordcount1 = tempDataNum;
+				else if (ans == 8)
+					pIni->recordcount2 = tempDataNum;
 			}
-
-			if (ans == 3)
-				pIni->maxvalue1 = tempDataNum;
-			else if (ans == 4)
-				pIni->minvalue1 = tempDataNum;
-			else if (ans == 5)
-				pIni->maxvalue2 = tempDataNum;
-			else if (ans == 6)
-				pIni->minvalue2 = tempDataNum;
-			else if (ans == 7)
-				pIni->recordcount1 = tempDataNum;
-			else if (ans == 8)
-				pIni->recordcount2 = tempDataNum;
-
-			FILE* fp;
-			fp = fopen("conf.ini", "w");
-			if (!fp)
-			{
-				printf("发生错误：打开配置参数文件失败。\n");
-				exit(0);
-			}	//打开文件
-			fprintf(fp, "%s\n", pIni->filesavepath);
-			fprintf(fp, "%s\n", pIni->filename);
-			fprintf(fp, "%d\n", pIni->maxvalue1);
-			fprintf(fp, "%d\n", pIni->minvalue1);
-			fprintf(fp, "%d\n", pIni->maxvalue2);
-			fprintf(fp, "%d\n", pIni->minvalue2);
-			fprintf(fp, "%d\n", pIni->recordcount1);
-			fprintf(fp, "%d\n", pIni->recordcount2);
-			fclose(fp);
 		}
+
+		fp = fopen("conf.ini", "w");
+		if (!fp)
+		{
+			printf("发生错误：打开配置参数文件失败。\n");
+			exit(0);
+		}	//打开文件
+		fprintf(fp, "%s\n", pIni->filesavepath);
+		fprintf(fp, "%s\n", pIni->filename);
+		fprintf(fp, "%d\n", pIni->maxvalue1);
+		fprintf(fp, "%d\n", pIni->minvalue1);
+		fprintf(fp, "%d\n", pIni->maxvalue2);
+		fprintf(fp, "%d\n", pIni->minvalue2);
+		fprintf(fp, "%d\n", pIni->recordcount1);
+		fprintf(fp, "%d\n", pIni->recordcount2);
+		fclose(fp);
+
 	} while (ans != 0);
 }
