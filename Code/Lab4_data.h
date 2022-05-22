@@ -31,3 +31,15 @@ typedef struct DataItem
 	int item2;	//数据记录三元组第二个元素
 	int item3;	//数据记录三元组第三个元素
 }DATAITEM;
+
+
+/**
+ * 一个链表节点
+*/
+typedef struct LINKNODE
+{
+	int value1;
+	int value2;
+	int value3;
+	struct LINKNODE* next;
+}NODE;

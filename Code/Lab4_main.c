@@ -3,8 +3,10 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-#include"Lab4_fun.h"
 #include"Lab4_data.h"
+#include"Lab4_call.h"
+#include"Lab4_loadfile.h"
+#include"Lab4_view.h"
 
 
 /**
@@ -28,9 +30,10 @@ void run(int argc, char* argv[])
 		{
 			modify_configinfo(pIni);
 			userMode = show_menu_developer();
+			self_check_and_get_configinfo(pIni, filename);
 		}
 	}
-		
+
 	if (userMode == 0)
 		return 0;
 	if (rootMode == 2 && userMode == 2)
@@ -45,7 +48,7 @@ void run(int argc, char* argv[])
 		if (userMode == 1)
 		{
 			call_program(userMode, pIni, filename, pDataNumStatus, pFilenameStatus);
-			
+
 		}
 		if (userMode == 2)
 		{
@@ -82,5 +85,10 @@ void run(int argc, char* argv[])
 	{
 		show_data_in_point_array(filename, fp, rootMode);
 	}
+	else if (storeMethod == 4)
+	{
+		show_data_in_link_list(filename, fp, rootMode);
+	}
 	fclose(fp);
+	return 0;
 }
