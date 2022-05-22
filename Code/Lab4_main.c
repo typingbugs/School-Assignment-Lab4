@@ -3,10 +3,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
-#include"Lab4_data.h"
+#include"Lab4_conf.h"
 #include"Lab4_call.h"
 #include"Lab4_loadfile.h"
 #include"Lab4_view.h"
+#include"Lab4_data.h"
 
 
 /**
