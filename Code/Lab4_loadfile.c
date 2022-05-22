@@ -275,7 +275,7 @@ static int fget_num(FILE* fp)
 /**
  * 函数功能：获取数据记录条数
  * 输入参数：数据记录条数信息的状态的指针pDataNumStatus，生成数据记录文件的限制参数指针CONF* pIni
- * 返回值：数据记录条数（int）
+ * 返回值：无
  * 作者：柯劲帆 21281280@bjtu.edu.cn
  * 日期：2022年5月10日
 */

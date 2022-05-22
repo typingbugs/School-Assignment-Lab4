@@ -57,7 +57,7 @@ int cmp_reverse_for_struct_array_qsort(const void* a, const void* b)
 
 /**
  * 函数功能：为给指针数组使用qsort编写的cmp函数
- * 输入参数：比较的两个一维数组的地址const void** a、const void** b
+ * 输入参数：比较的两个二维数组的地址const void** a、const void** b
  * 返回值：<0（不进行置换） / >0（进行置换） / 0（不进行置换）
  * 作者：柯劲帆 21281280@bjtu.edu.cn
  * 日期：2022年5月20日
@@ -70,7 +70,7 @@ int cmp_for_point_array_qsort(const void** a, const void** b)
 
 /**
  * 函数功能：为给指针数组使用qsort编写的cmp函数（逆序）
- * 输入参数：比较的两个一维数组的地址const void** a、const void** b
+ * 输入参数：比较的两个二维数组的地址const void** a、const void** b
  * 返回值：<0（不进行置换） / >0（进行置换） / 0（不进行置换）
  * 作者：柯劲帆 21281280@bjtu.edu.cn
  * 日期：2022年5月20日
