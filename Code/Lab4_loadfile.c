@@ -22,7 +22,7 @@ void create_path(char* filename);
  * 输入参数：生成数据记录文件的限制参数指针CONF* pIni，数据记录文件路径和文件名filename
  * 返回值：无
  * 作者：柯劲帆 21281280@bjtu.edu.cn
- * 日期：2022年5月9日
+ * 日期：2022年5月25日
 */
 void self_check_and_get_configinfo(CONF* pIni, char* filename)
 {
@@ -55,9 +55,14 @@ void self_check_and_get_configinfo(CONF* pIni, char* filename)
 	fclose(conf);
 
 	strncpy(filename, pIni->filesavepath, MAX_STR_LEN);
-	strcpy(filename, "/");
-	strncpy(filename, pIni->filename, MAX_STR_LEN);
+	strcat(filename, "/");
+	strncat(filename, pIni->filename, MAX_STR_LEN);
 	if (!check_filename(filename))
+	{
+		printf("发生错误：配置参数有误，请联系管理员解决。\n");
+		exit(0);
+	}
+	if(change_Filename_to_absolute(filename)==0)
 	{
 		printf("发生错误：配置参数有误，请联系管理员解决。\n");
 		exit(0);
@@ -393,7 +398,6 @@ void get_filename(int* pFilenameStatus, char* filename)
 */
 void store_data_in_2d_array(int(*data)[3], FILE* fp, int dataNum)
 {
-
 	for (int i = 0; i < dataNum; i++)
 	{
 		char numArr[20];
