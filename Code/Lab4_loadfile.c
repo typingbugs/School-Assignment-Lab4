@@ -588,3 +588,32 @@ void store_data_in_link_list(NODE* head, FILE* fp, int dataNum)
 		}
 	}
 }
+
+
+/**
+ * 函数功能：从文件开头读取数据记录条数
+ * 输入参数：文件指针fp
+ * 返回值：数据记录条数（int）
+ * 作者：柯劲帆 21281280@bjtu.edu.cn
+ * 日期：2022年5月25日
+*/
+int get_dataNum_from_file(FILE* fp)
+{
+	int dataNum;
+	char numArr[MAX_INT_LEN + 1];
+	if (fgets(numArr, MAX_INT_LEN + 1, fp) == NULL)
+	{
+		printf("数据记录有误！请检查数据记录文件。\n");
+		exit(0);
+	}
+	int len = strlen(numArr);
+	if (numArr[len - 1] == '\n')
+		numArr[len - 1] = '\0';	//删去读入的回车
+	dataNum = str_to_int(numArr);
+	if (dataNum < 0)
+	{
+		printf("数据记录有误！请检查数据记录文件。\n");
+		exit(0);
+	}
+	return dataNum;
+}

@@ -76,19 +76,19 @@ void run(int argc, char* argv[])
 	int storeMethod = show_menu_ask_how_to_store();
 	if (storeMethod == 1)
 	{
-		show_data_in_2d_array(filename, fp, rootMode);
+		show_data_in_2d_array(filename, fp, rootMode, get_dataNum_from_file(fp));
 	}
 	else if (storeMethod == 2)
 	{
-		show_data_in_struct_array(filename, fp, rootMode);
+		show_data_in_struct_array(filename, fp, rootMode, get_dataNum_from_file(fp));
 	}
 	else if (storeMethod == 3)
 	{
-		show_data_in_point_array(filename, fp, rootMode);
+		show_data_in_point_array(filename, fp, rootMode, get_dataNum_from_file(fp));
 	}
 	else if (storeMethod == 4)
 	{
-		show_data_in_link_list(filename, fp, rootMode);
+		show_data_in_link_list(filename, fp, rootMode, get_dataNum_from_file(fp));
 	}
 	fclose(fp);
 	return 0;

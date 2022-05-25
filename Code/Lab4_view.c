@@ -349,29 +349,14 @@ static void print_data_in_link_list(NODE* head)
 
 /**
  * 函数功能：排序并展示数据记录（二维数组）
- * 输入参数：数据记录文件路径和文件名filename，文件指针fp，用户/开发者模式rootMode
+ * 输入参数：数据记录文件路径和文件名filename，文件指针fp，用户/开发者模式rootMode，数据记录条数dataNum
  * 返回值：无
  * 作者：柯劲帆 21281280@bjtu.edu.cn
- * 日期：2022年5月18日
+ * 日期：2022年5月25日
 */
-void show_data_in_2d_array(char* filename, FILE* fp, int rootMode)
+void show_data_in_2d_array(char* filename, FILE* fp, int rootMode, int dataNum)
 {
-	int dataNum;
-	char numArr[MAX_INT_LEN + 1];
-	if (fgets(numArr, MAX_INT_LEN + 1, fp) == NULL)
-	{
-		printf("数据记录有误！请检查数据记录文件。\n");
-		exit(0);
-	}
-	int len = strlen(numArr);
-	if (numArr[len - 1] == '\n')
-		numArr[len - 1] = '\0';	//删去读入的回车
-	dataNum = str_to_int(numArr);
-	if (dataNum < 0)
-	{
-		printf("数据记录有误！请检查数据记录文件。\n");
-		exit(0);
-	}
+	
 	int(*data)[3] = (int(*)[3])malloc(sizeof(int) * 3 * dataNum);
 	if (data == NULL)
 	{
@@ -462,29 +447,13 @@ void show_data_in_2d_array(char* filename, FILE* fp, int rootMode)
 
 /**
  * 函数功能：排序并展示数据记录（结构体数组）
- * 输入参数：数据记录文件路径和文件名filename，文件指针fp，用户/开发者模式rootMode
+ * 输入参数：数据记录文件路径和文件名filename，文件指针fp，用户/开发者模式rootMode，数据记录条数dataNum
  * 返回值：无
  * 作者：柯劲帆 21281280@bjtu.edu.cn
- * 日期：2022年5月20日
+ * 日期：2022年5月25日
 */
-void show_data_in_struct_array(char* filename, FILE* fp, int rootMode)
+void show_data_in_struct_array(char* filename, FILE* fp, int rootMode, int dataNum)
 {
-	int dataNum;
-	char numArr[MAX_INT_LEN + 1];
-	if (fgets(numArr, MAX_INT_LEN + 1, fp) == NULL)
-	{
-		printf("数据记录有误！请检查数据记录文件。\n");
-		exit(0);
-	}
-	int len = strlen(numArr);
-	if (numArr[len - 1] == '\n')
-		numArr[len - 1] = '\0';	//删去读入的回车
-	dataNum = str_to_int(numArr);
-	if (dataNum < 0)
-	{
-		printf("数据记录有误！请检查数据记录文件。\n");
-		exit(0);
-	}
 	DATAITEM* data = (DATAITEM*)malloc(sizeof(DATAITEM) * dataNum);
 	if (data == NULL)
 	{
@@ -575,29 +544,13 @@ void show_data_in_struct_array(char* filename, FILE* fp, int rootMode)
 
 /**
  * 函数功能：排序并展示数据记录（指针数组）
- * 输入参数：数据记录文件路径和文件名filename，文件指针fp，用户/开发者模式rootMode
+ * 输入参数：数据记录文件路径和文件名filename，文件指针fp，用户/开发者模式rootMode，数据记录条数dataNum
  * 返回值：无
  * 作者：柯劲帆 21281280@bjtu.edu.cn
- * 日期：2022年5月20日
+ * 日期：2022年5月25日
 */
-void show_data_in_point_array(char* filename, FILE* fp, int rootMode)
+void show_data_in_point_array(char* filename, FILE* fp, int rootMode, int dataNum)
 {
-	int dataNum;
-	char numArr[MAX_INT_LEN + 1];
-	if (fgets(numArr, MAX_INT_LEN + 1, fp) == NULL)
-	{
-		printf("数据记录有误！请检查数据记录文件。\n");
-		exit(0);
-	}
-	int len = strlen(numArr);
-	if (numArr[len - 1] == '\n')
-		numArr[len - 1] = '\0';	//删去读入的回车
-	dataNum = str_to_int(numArr);
-	if (dataNum < 0)
-	{
-		printf("数据记录有误！请检查数据记录文件。\n");
-		exit(0);
-	}
 	DATAITEM** data = (DATAITEM**)malloc(sizeof(DATAITEM*) * dataNum);
 	if (data == NULL)
 	{
@@ -689,29 +642,13 @@ void show_data_in_point_array(char* filename, FILE* fp, int rootMode)
 
 /**
  * 函数功能：排序并展示数据记录（链表）
- * 输入参数：数据记录文件路径和文件名filename，文件指针fp，用户/开发者模式rootMode
+ * 输入参数：数据记录文件路径和文件名filename，文件指针fp，用户/开发者模式rootMode，数据记录条数dataNum
  * 返回值：无
  * 作者：柯劲帆 21281280@bjtu.edu.cn
- * 日期：2022年5月20日
+ * 日期：2022年5月25日
 */
-void show_data_in_link_list(char* filename, FILE* fp, int rootMode)
+void show_data_in_link_list(char* filename, FILE* fp, int rootMode, int dataNum)
 {
-	int dataNum;
-	char numArr[MAX_INT_LEN + 1];
-	if (fgets(numArr, MAX_INT_LEN + 1, fp) == NULL)
-	{
-		printf("数据记录有误！请检查数据记录文件。\n");
-		exit(0);
-	}
-	int len = strlen(numArr);
-	if (numArr[len - 1] == '\n')
-		numArr[len - 1] = '\0';	//删去读入的回车
-	dataNum = str_to_int(numArr);
-	if (dataNum < 0)
-	{
-		printf("数据记录有误！请检查数据记录文件。\n");
-		exit(0);
-	}
 	NODE* head = (NODE*)malloc(sizeof(NODE));
 	head->next = NULL;
 	if (head == NULL)

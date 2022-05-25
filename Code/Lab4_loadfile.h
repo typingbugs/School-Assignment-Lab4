@@ -14,3 +14,4 @@ void store_data_in_2d_array(int(*data)[3], FILE* fp, int dataNum);
 void store_data_in_struct_array(DATAITEM* data, FILE* fp, int dataNum);
 void store_data_in_point_array(DATAITEM** data, FILE* fp, int dataNum);
 void store_data_in_link_list(NODE* head, FILE* fp, int dataNum);
+int get_dataNum_from_file(FILE* fp);
