@@ -53,7 +53,6 @@ void run(int argc, char* argv[])
 		if (userMode == 1)
 		{
 			call_program(userMode, pIni, filename, pDataNumStatus, pFilenameStatus);
-
 		}
 		if (userMode == 2)
 		{
@@ -95,5 +94,7 @@ void run(int argc, char* argv[])
 		show_data_in_link_list(filename, fp, rootMode, get_dataNum_from_file(fp));
 	}
 	fclose(fp);
+	printf("程序运行完毕。按任意键退出...");
+	getchar();
 	return 0;
 }
